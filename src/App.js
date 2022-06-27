@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter as Router, Switch , Route } from 'react-router-dom'
+import Frame from './components/Frame';
+import './style.css'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <Router>
+    <div id="background"></div>
+    <div id="body">
+        <form>
+            <div className = 'bloc'>
+                <input type="text" id = "lon"/>
+                <label>Longitude</label>
+            </div>
+            <div className = 'bloc'>
+                <input type="text" id = "lat"/>
+                <label>latitude</label>
+            </div>
+        </form>
+        <div className="mapouter">
+            <div className="gmap_canvas" id = "gmapCanvas">
+                <Switch>
+                    <Route path="/:pos?" component={Frame}/>
+                    
+                </Switch>
+            </div>
+        </div>
     </div>
+    </Router>
   );
 }
 
